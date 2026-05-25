@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Product } from "@/types/product";
 import { useCartStore } from "@/store/useCartStore";
+import Link from "next/link";
 
 interface ProductCardProps {
   product: Product;
@@ -29,9 +30,11 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
         <span className="text-xs font-medium text-blue-600 uppercase tracking-wider mb-2">
           {product.category}
         </span>
-        <h3 className="text-lg font-semibold text-gray-900 line-clamp-2 mb-2">
+       <Link href={`/product/${product.id}`} className="hover:text-blue-600 transition-colors">
+        <h3 className="text-lg font-semibold text-gray-900 line-clamp-2 mb-2 cursor-pointer">
           {product.title}
         </h3>
+      </Link>
         <div className="mt-auto flex items-center justify-between">
           <span className="text-xl font-bold text-gray-900">
             ${product.price.toFixed(2)}

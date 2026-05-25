@@ -32,3 +32,28 @@ export async function getCategories(): Promise<string[]> {
     return []; // Fallback seguro
   }
 }
+
+export async function getProductById(id: string): Promise<Product> {
+  try {
+    const response = await fetch(`${API_URL}/products/${id}`);
+    if (!response.ok) throw new Error("Error fetching product");
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+    throw new Error("No se pudo cargar el producto.");
+  }
+}
+
+export async function getRelatedProducts(category: string, currentProductId: number): Promise<Product[]> {
+  try {
+    const response = await fetch(`${API_URL}/products/category/${category}`);
+    if (!response.ok) throw new Error("Error fetching related products");
+    
+    const products: Product[] = await response.json();
+    
+    return products.filter((p) => p.id !== currentProductId).slice(0, 3);
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
