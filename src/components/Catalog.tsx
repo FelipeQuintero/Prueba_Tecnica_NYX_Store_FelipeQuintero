@@ -48,8 +48,12 @@ export default function Catalog({ initialProducts, categories }: CatalogProps) {
 
       {/* Grilla de productos */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {filteredProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
+        {filteredProducts.map((product, index) => (
+          <ProductCard 
+            key={product.id} 
+            product={product} 
+            priority={index < 4} // <-- Las primeras 4 imágenes cargan con prioridad
+          />
         ))}
       </div>
       
