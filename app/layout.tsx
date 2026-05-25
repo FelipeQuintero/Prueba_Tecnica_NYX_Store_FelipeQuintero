@@ -6,8 +6,8 @@ import Header from "@/components/Header";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "NYX eCommerce Prueba Técnica",
-  description: "eCommerce construido con Next.js y Zustand",
+  title: "NYX Store | Colección Japandi | Prueba Técnica Hi Beauty",
+  description: "Una experiencia de eCommerce moderna y natural construida con Next.js.",
 };
 
 export default function RootLayout({
@@ -17,7 +17,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`${inter.className} bg-gray-50 antialiased`}>
+      {/* Fondo de página: Crema cálido (Warm Cream) */}
+      <body className={`${inter.className} bg-[#FDF9F3] text-stone-900 antialiased`}>
         <Header />
         {children}
       </body>

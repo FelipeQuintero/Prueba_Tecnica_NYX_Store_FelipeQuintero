@@ -19,14 +19,14 @@ export default function Catalog({ initialProducts, categories }: CatalogProps) {
 
   return (
     <div className="w-full">
-      {/* Filtros */}
-      <div className="flex flex-wrap gap-2 mb-8">
+      {/* Filtros: Minimalistas y orgánicos */}
+      <div className="flex flex-wrap gap-2.5 mb-10 pb-2 border-b border-gray-100">
         <button
           onClick={() => setSelectedCategory("all")}
-          className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+          className={`px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all ${
             selectedCategory === "all"
-              ? "bg-black text-white"
-              : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              ? "bg-stone-900 text-white"
+              : "bg-stone-100 text-stone-700 hover:bg-stone-200"
           }`}
         >
           Todos
@@ -35,10 +35,10 @@ export default function Catalog({ initialProducts, categories }: CatalogProps) {
           <button
             key={category}
             onClick={() => setSelectedCategory(category)}
-            className={`px-4 py-2 rounded-full text-sm font-medium capitalize transition-colors ${
+            className={`px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all ${
               selectedCategory === category
-                ? "bg-black text-white"
-                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                ? "bg-stone-900 text-white"
+                : "bg-stone-100 text-stone-700 hover:bg-stone-200"
             }`}
           >
             {category}
@@ -46,19 +46,15 @@ export default function Catalog({ initialProducts, categories }: CatalogProps) {
         ))}
       </div>
 
-      {/* Grilla de productos */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {filteredProducts.map((product, index) => (
-          <ProductCard 
-            key={product.id} 
-            product={product} 
-            priority={index < 4} // <-- Las primeras 4 imágenes cargan con prioridad
-          />
+      {/* Grilla de productos: Totalmente Responsive */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10">
+        {filteredProducts.map((product) => (
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
       
       {filteredProducts.length === 0 && (
-        <p className="text-center text-gray-500 mt-10">
+        <p className="text-center text-stone-600 mt-12 py-10 bg-white rounded-lg shadow-sm border border-gray-100">
           No se encontraron productos en esta categoría.
         </p>
       )}

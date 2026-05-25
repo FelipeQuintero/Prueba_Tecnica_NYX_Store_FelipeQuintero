@@ -9,14 +9,15 @@ export default async function Home() {
   ]);
 
   return (
-    <main className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <main className="min-h-screen bg-[#FDF9F3] py-12 md:py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <header className="mb-10 text-center sm:text-left">
-          <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight mb-2">
-            NYX Store
+        {/* Cabecera Japandi */}
+        <header className="mb-12 text-center sm:text-left border-b border-gray-100 pb-8">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-stone-950 tracking-tighter mb-3 leading-tight">
+            NYX Colección<span className="text-amber-800">.</span>
           </h1>
-          <p className="text-gray-500 max-w-2xl">
-            Descubre nuestra colección de productos consumidos directamente desde FakeStore API.
+          <p className="text-stone-700 text-lg max-w-2xl leading-relaxed">
+            Explora una cuidada selección de productos consumidos directamente desde FakeStore API, ahora bajo una estética Japandi: minimalista, natural y cálida.
           </p>
         </header>
 
