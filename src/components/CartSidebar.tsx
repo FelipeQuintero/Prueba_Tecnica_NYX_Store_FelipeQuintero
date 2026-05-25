@@ -10,9 +10,16 @@ interface CartSidebarProps {
 }
 
 export default function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
-  const { cart, removeFromCart, updateQuantity, getCartTotal } = useCartStore();
+  // Extraemos clearCart de la tienda global de Zustand
+  const { cart, removeFromCart, updateQuantity, getCartTotal, clearCart } = useCartStore();
 
   if (!isOpen) return null;
+
+  // Función manejadora para simular la compra/pago exitoso
+  const handleCheckout = () => {
+    clearCart(); // Vacía el carrito por completo (lo deja en 0)
+    onClose();   // Cierra el Sidebar lateral
+  };
 
   return (
     <>
@@ -92,8 +99,11 @@ export default function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
               <p>Total a pagar</p>
               <p className="text-2xl">${getCartTotal().toFixed(2)}</p>
             </div>
-            {/* Botón Principal Japandi */}
-            <button className="w-full bg-stone-950 text-white px-8 py-4 rounded-xl font-semibold hover:bg-stone-800 transition-colors active:scale-[0.98] tracking-tight">
+            {/* Botón Principal Japandi con el nuevo manejador onClick */}
+            <button 
+              onClick={handleCheckout}
+              className="w-full bg-stone-950 text-white px-8 py-4 rounded-xl font-semibold hover:bg-stone-800 transition-colors active:scale-[0.98] tracking-tight"
+            >
               Proceder al pago
             </button>
           </div>
